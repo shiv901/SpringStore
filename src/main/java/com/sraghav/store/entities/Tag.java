@@ -1,16 +1,17 @@
 package com.sraghav.store.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "tags")
 public class Tag {
@@ -19,4 +20,15 @@ public class Tag {
 
     @Column(name = "name")
     private String name;
+
+    @ManyToMany(mappedBy = "tags")
+    private Set<User> users = new HashSet<>();
+
+    public Tag(String tag) {
+        this.name = tag;
+    }
+
+    public String toString(){
+        return name;
+    }
 }

@@ -5,6 +5,10 @@ import lombok.*;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@ToString
 @Entity
 @Table(name = "addresses")
 public class Address {
@@ -23,4 +27,9 @@ public class Address {
 
     @Column(name = "pin")
     private String pin;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @ToString.Exclude
+    private User user;
 }
