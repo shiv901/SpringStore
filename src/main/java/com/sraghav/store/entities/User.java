@@ -60,7 +60,7 @@ public class User {
         newTag.getUsers().add(this);
     }
 
-    @OneToOne(mappedBy = "users")
+    @OneToOne(mappedBy = "user")
     private Profile profile;
 
     public void addProfile(Profile profile) {
